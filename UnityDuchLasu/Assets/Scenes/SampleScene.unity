@@ -909,7 +909,13 @@ MonoBehaviour:
   trPlayer: {fileID: 133720591}
   trViewFinder: {fileID: 1978745479}
   col: {fileID: 1978745476}
+  cam: {fileID: 519420031}
   ViewFinderWidth: 0
+  tangent: 0
+  a: 0
+  b: 0
+  c: 0
+  delta: 0
   x1: 0
 --- !u!4 &1978745479
 Transform:

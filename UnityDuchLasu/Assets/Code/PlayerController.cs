@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public GameObject player;
     public float movmentForce = 0;
     public int speed = 0;
     public float maxSpeed = 0f;
@@ -33,14 +32,20 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {      
         speed = (int)rb.velocity.y;
 
-        player.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
-       
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            jumpTimer = 10;
+            
+        }   
 
-        if (Input.GetKey(KeyCode.D)&& wallSideR)
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.D) && wallSideR)
         {
             if (rb.velocity.x < maxSpeed) rb.AddForce(axisX * movmentForce * Time.deltaTime);
         }
@@ -50,23 +55,11 @@ public class PlayerController : MonoBehaviour
             if (rb.velocity.x > -maxSpeed) rb.AddForce(axisX * -movmentForce * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
-            jumpTimer = 10;
-            
-
-
-        }
-
-
         if (Input.GetKey(KeyCode.Space) && jumpTimer > 0)
         {
             rb.AddForce(axisY * jumpForce * Time.deltaTime);
             jumpTimer--;
         }
-
-       
-
     }
     void OnCollisionStay2D(Collision2D col)
     {

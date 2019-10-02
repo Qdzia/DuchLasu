@@ -6,18 +6,17 @@ public class CameraMovment : MonoBehaviour
 {
 
     public Transform tr;
-    public Transform cam;
-    Vector3 pos;
+    public Vector3 offSet;
     // Start is called before the first frame update
     void Start()
     {
-        pos = cam.position - tr.position;
+        offSet = transform.position - tr.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        cam.position = tr.position;
-        cam.position += pos;
+        transform.position = tr.position;
+        transform.position += offSet;
     }
 }
