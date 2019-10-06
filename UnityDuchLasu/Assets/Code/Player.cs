@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    
+    public int hp
+    {
+        set
+        {
+            _hp += value;
+            if (_hp <= 0) FindObjectOfType<GameManager>().EndOfGame();
+        }
+        get { return _hp; }
+    }
+    int _hp = 100;
 
-    public int hp = 100;
     // Start is called before the first frame update
     void Start()
     {

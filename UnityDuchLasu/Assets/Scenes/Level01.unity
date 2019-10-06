@@ -345,7 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdbcfa32c37a87498e272c37b75d126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
 --- !u!1001 &437980060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,7 +1129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skrypt nie dzila
+  m_Text: Hp xxx
 --- !u!222 &1316221739
 CanvasRenderer:
   m_ObjectHideFlags: 0

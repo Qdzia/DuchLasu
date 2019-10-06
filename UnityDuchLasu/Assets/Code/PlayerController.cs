@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             rb.AddForce(new Vector2(9f, 15f),ForceMode2D.Impulse);
-            player.hp -= 20;
+            player.hp = -20;
         }
 
     }
