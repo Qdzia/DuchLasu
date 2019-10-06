@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity
+public class GameManager : MonoBehaviour
 {
-
-    public int hp = 100;
     // Start is called before the first frame update
     void Start()
     {

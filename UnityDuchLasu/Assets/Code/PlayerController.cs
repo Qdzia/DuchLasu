@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Player player;
     public float movmentForce = 0;
     public int speed = 0;
     public float maxSpeed = 0f;
@@ -79,6 +80,12 @@ public class PlayerController : MonoBehaviour
             if (col.transform.position.x < rb.position.x) wallSideL = false;
             else wallSideR = false;
 
+        }
+
+        if (col.gameObject.tag == "Enemy")
+        {
+            rb.AddForce(new Vector2(9f, 15f),ForceMode2D.Impulse);
+            player.hp -= 20;
         }
 
     }
