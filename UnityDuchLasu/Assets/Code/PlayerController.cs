@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public bool wallSideL = true;
     public bool wallSideR = true;
     float jumpTimer = 0f;
-    int canJumpTimer = 0;
     float wallGravity = 0f;
     Vector2 axisX = new Vector2(1f, 0f);
     Vector2 axisY = new Vector2(0f, 1f);
@@ -40,10 +39,12 @@ public class PlayerController : MonoBehaviour
         {
             jumpTimer = 10;
             
-        }   
+        }
 
+        if (transform.position.x > 10) FindObjectOfType<GameManager>().LevelCompleted();
     }
 
+    
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D) && wallSideR)
