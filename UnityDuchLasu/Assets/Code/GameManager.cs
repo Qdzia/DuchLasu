@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameHasEnded = true;
-            Invoke("Restart",2f);
+            SceneManager.LoadScene("GameOver");
         }
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         UILevelCom.SetActive(false);
     }
 
@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Level Completed");
             gameHasEnded = true;
             UILevelCom.SetActive(true);
-            Invoke("Restart", 4f);
         }
 
     }
