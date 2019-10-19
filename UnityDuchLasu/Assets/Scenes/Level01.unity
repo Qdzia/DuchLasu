@@ -222,13 +222,14 @@ MonoBehaviour:
     m_Bits: 512
   cap: {fileID: 133720594}
   speed: 5
-  velocity: 20
+  velocity: 15
   wallFriction: 1
   extraJumpsNumber: 1
   circleRadius: 0.1
   jumpForce: 20
   jumpTimer: 0.18
   extraJumps: 0
+  dodgeTime: 13
 --- !u!4 &133720591
 Transform:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdbcfa32c37a87498e272c37b75d126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canHurt: 1
 --- !u!95 &133720596
 Animator:
   serializedVersion: 3
@@ -893,7 +895,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1aaf7ab8609f3194c8fa3f5e95a2f0ca, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1829,7 +1831,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

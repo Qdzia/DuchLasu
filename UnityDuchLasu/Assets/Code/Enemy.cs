@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    
     // Start is called before the first frame update
     public int hp
     {
@@ -26,7 +27,7 @@ public class Enemy : Entity
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     private void OnTriggerStay2D(Collider2D col)

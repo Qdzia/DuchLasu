@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float jumpTimer;
     public int extraJumps;
+    public int dodgeTime;
 
     float moveInput;
     bool faceingRight = true;
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour
     int wallID;
     bool blockDir;
     bool isCrouch = false;
+    int dodgeTimer;
+    bool isDodge;
+
 
     //public LayerMask whatIsGround; -> If want add checks in OverlapCircle
 
@@ -41,10 +45,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //Allow to jump
+        //Allow to jump
+        Dodge();
         Jump();
 
         Crouch();
+        
 
         speed = Mathf.Abs((int)rb.velocity.x);
         animator.SetFloat("Speed", speed);
@@ -69,6 +75,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(9f, 15f), ForceMode2D.Impulse);
             player.hp = -20;
+
+            if (isDodge)
+            {
+                Physics2D.IgnoreCollision(col.collider, cap);
+               
+            }else Physics2D.IgnoreCollision(col.collider, cap,false);
         }
 
         //Add extra jump after colision with wall, check id to not allow on second jump on the same wall
@@ -83,7 +95,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
+        
     }
 
     void OnCollisionStay2D(Collision2D col)
@@ -147,6 +159,8 @@ public class PlayerController : MonoBehaviour
 
     bool BlocDir()
     {
+        if (isDodge) return false;
+
         if (blockDir)
         {
             if (faceingRight && moveInput > 0) return false;
@@ -175,4 +189,34 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    void Dodge()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && !isDodge)
+        {
+            CanHurt();
+            dodgeTimer = dodgeTime;
+            isDodge = true;
+        }
+
+        if (dodgeTimer > 0)
+        {
+            if(faceingRight)rb.velocity = Vector2.right * velocity * 1.5f;
+            else rb.velocity = Vector2.left * velocity * 1.5f;
+            dodgeTimer--;
+            if (dodgeTimer == 1) CanHurt();
+        }
+        else isDodge = false;
+
+    }
+
+    public void CanHurt()
+    {
+        player.canHurt = !player.canHurt;
+        Debug.Log("CanHurt");
+    }
+
+
+
+    
 }

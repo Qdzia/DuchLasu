@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    
+   
     public int hp
     {
         set
@@ -15,6 +15,8 @@ public class Player : Entity
         get { return _hp; }
     }
     int _hp = 100;
+
+    public bool canHurt = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,4 +29,5 @@ public class Player : Entity
     {
         
     }
+    
 }
