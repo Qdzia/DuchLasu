@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public Transform feetPos;
     public LayerMask mask;
+    public CapsuleCollider2D cap;
 
     public int speed = 0;
     public float velocity;
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
     bool isJumping;
     int wallID;
     bool blockDir;
-    
+    bool isCrouch = false;
+
     //public LayerMask whatIsGround; -> If want add checks in OverlapCircle
 
 
@@ -39,8 +41,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Allow to jump
+      //Allow to jump
         Jump();
+
+        Crouch();
 
         speed = Mathf.Abs((int)rb.velocity.x);
         animator.SetFloat("Speed", speed);
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         //Moving Horizontal
         moveInput = Input.GetAxis("Horizontal");
-        if(BlocDir())rb.velocity = new Vector2(moveInput * velocity, rb.velocity.y);
+        if (BlocDir()) rb.velocity = new Vector2(moveInput * velocity, rb.velocity.y);
 
         //Change Faceing Side
         Flip();
@@ -72,14 +76,12 @@ public class PlayerController : MonoBehaviour
         {
             blockDir = true;
 
-            if (wallID != col.gameObject.GetInstanceID() && extraJumps==0)
+            if (wallID != col.gameObject.GetInstanceID() && extraJumps == 0)
             {
                 extraJumps++;
-                Debug.Log("nierówne");
                 wallID = col.gameObject.GetInstanceID();
             }
-
-            Debug.Log("zmien sciane");
+            
         }
 
     }
@@ -113,12 +115,12 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         //Using object FeetPos placed under player to check collision with sth
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius,mask);
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, mask);
         if (isGrounded)
         {
             extraJumps = extraJumpsNumber;
             wallID = 0;
-        } 
+        }
 
         //Jump on hold Method + multiple Jump 
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
@@ -126,7 +128,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             isJumping = true;
             jumpTimerCounter = jumpTimer;
-            Debug.Log("Jump");
             extraJumps--;
         }
 
@@ -149,9 +150,29 @@ public class PlayerController : MonoBehaviour
         if (blockDir)
         {
             if (faceingRight && moveInput > 0) return false;
-            else if(!faceingRight && moveInput < 0) return false;
+            else if (!faceingRight && moveInput < 0) return false;
         }
 
         return true;
+    }
+
+    void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)
+        {
+            cap.size = new Vector2(cap.size.x, cap.size.y/2);
+            cap.offset = new Vector2(cap.offset.x, cap.offset.y * 4);
+            Debug.Log("crouch");
+            isCrouch = true;
+        }
+
+        if ((Input.GetKeyUp(KeyCode.LeftControl) || isJumping) && isCrouch)
+        {
+            cap.size = new Vector2(cap.size.x, cap.size.y * 2);
+            cap.offset = new Vector2(cap.offset.x, cap.offset.y/4);
+            Debug.Log("!!!crouch");
+            isCrouch = false;
+        }
+
     }
 }

@@ -216,26 +216,19 @@ MonoBehaviour:
   rb: {fileID: 133720593}
   player: {fileID: 133720595}
   animator: {fileID: 133720596}
-  spriteRen: {fileID: 133720592}
-  movmentForce: 3500
-  speed: 5
-  maxSpeed: 1000
-  jumpDuration: 33
-  jumpLowToMax: 0
-  canJump: 0
-  wallSideL: 1
-  wallSideR: 1
-  velocity: 20
   feetPos: {fileID: 1300363968}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  cap: {fileID: 133720594}
+  speed: 5
+  velocity: 20
+  wallFriction: 1
+  extraJumpsNumber: 1
   circleRadius: 0.1
   jumpForce: 20
   jumpTimer: 0.18
   extraJumps: 0
-  extraJumpsNumber: 1
-  wallFriction: 1
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!4 &133720591
 Transform:
   m_ObjectHideFlags: 0
