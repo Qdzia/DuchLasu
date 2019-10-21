@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float jumpTimer;
     public int extraJumps;
     public int dodgeTime;
+    public bool isDodge;
 
     float moveInput;
     bool faceingRight = true;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     bool blockDir;
     bool isCrouch = false;
     int dodgeTimer;
-    bool isDodge;
+    
 
 
     //public LayerMask whatIsGround; -> If want add checks in OverlapCircle
@@ -75,12 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(9f, 15f), ForceMode2D.Impulse);
             player.hp = -20;
-
-            if (isDodge)
-            {
-                Physics2D.IgnoreCollision(col.collider, cap);
-               
-            }else Physics2D.IgnoreCollision(col.collider, cap,false);
+ 
         }
 
         //Add extra jump after colision with wall, check id to not allow on second jump on the same wall
