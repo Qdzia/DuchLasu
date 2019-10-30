@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Jacket of Eternity
   m_EditorClassIdentifier: 
   itemName: Jacket of Eternity
-  icon: {fileID: 21300000, guid: 8062c315a2c6a7240aecbd9be34ef4ec, type: 3}
+  icon: {fileID: 21300000, guid: 44b6c69c8f7aa6340a27fabaf85a8ca9, type: 3}
   isInteractable: 1

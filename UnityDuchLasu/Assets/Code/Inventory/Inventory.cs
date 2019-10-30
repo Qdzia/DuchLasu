@@ -21,17 +21,33 @@ public class Inventory : MonoBehaviour
     #endregion
 
     public List<Item> items = new List<Item>();
+    public GameObject inventoryUI;
+
+
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallBack;
+
 
     public void Add(Item item)
     {
         if (item.isInteractable) items.Add(item);
+        foreach (Item i in items) Debug.Log(i.itemName);
+
+        if(onItemChangedCallBack != null) onItemChangedCallBack.Invoke();
+
     }
 
     public void Remove(Item item)
     {
         items.Remove(item);
+        foreach (Item i in items) Debug.Log(i.itemName);
+
+        if (onItemChangedCallBack != null) onItemChangedCallBack.Invoke();
     }
 
-
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) inventoryUI.SetActive(!inventoryUI.activeSelf);
+    }
 
 }

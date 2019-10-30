@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Hat of Chaos
   m_EditorClassIdentifier: 
   itemName: Hat of Chaos
-  icon: {fileID: 21300000, guid: 8062c315a2c6a7240aecbd9be34ef4ec, type: 3}
+  icon: {fileID: 21300000, guid: 535d2f9e917b0c04c84986d5eab8be7b, type: 3}
   isInteractable: 1

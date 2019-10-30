@@ -21,13 +21,15 @@ public class ItemPickUp : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.F))
         {
+            PickUp();
             Destroy(gameObject);
         }
     }
 
     void PickUp()
     {
-
+        Inventory.instance.Add(item);
+    
     }
 
     void Remove()
