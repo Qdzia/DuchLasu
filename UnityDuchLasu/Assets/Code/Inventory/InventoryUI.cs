@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public GameObject itemParent;
+    public GameObject equipParent;
     Inventory inventory;
     InventorySlot[] slots;
 
@@ -30,5 +31,14 @@ public class InventoryUI : MonoBehaviour
         }
 
     }
-    
+
+    public void UpdateEquipment()
+    {
+        if (System.Enum.GetNames(typeof(EquipmentSlot)).Length == equipParent.transform.childCount)
+        {
+            Debug.Log("children: " + equipParent.transform.childCount);
+
+        }
+    }
+
 }
