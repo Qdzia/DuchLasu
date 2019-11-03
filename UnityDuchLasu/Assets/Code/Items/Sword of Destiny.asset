@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Sword of Destiny
   icon: {fileID: 3432332238556807001, guid: 42cffe2ff76a5d3469d45587202bdb97, type: 3}
   isInteractable: 1
-  trait01: 0
+  trait01: 15
   trait02: 0
   equipSlot: 0

@@ -11,6 +11,17 @@ public class PlayerStats : CharacterStats
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
+        if (newItem != null)
+        {
+            armor.AddModifire(newItem.trait01);
+            damage.AddModifire(newItem.trait02);
+        }
 
+        if (oldItem != null)
+        {
+            armor.RemoveModifire(oldItem.trait01);
+            damage.RemoveModifire(oldItem.trait02);
+        }
+       
     }
 }

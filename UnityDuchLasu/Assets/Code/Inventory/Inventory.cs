@@ -31,7 +31,6 @@ public class Inventory : MonoBehaviour
     public void Add(Item item)
     {
         if (item.isInteractable) items.Add(item);
-        foreach (Item i in items) Debug.Log(i.itemName);
 
         if(onItemChangedCallBack != null) onItemChangedCallBack.Invoke();
 
@@ -40,7 +39,6 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
-        foreach (Item i in items) Debug.Log(i.itemName);
 
         if (onItemChangedCallBack != null) onItemChangedCallBack.Invoke();
     }

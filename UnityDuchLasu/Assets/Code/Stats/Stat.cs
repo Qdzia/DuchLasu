@@ -12,7 +12,10 @@ public class Stat
     private List<int> modifires = new List<int>();
     public int GetValue()
     {
-        return baseValue;
+        int finalValue = baseValue;
+        modifires.ForEach(x => finalValue += x);
+        Debug.Log("modyfikator: " + finalValue);
+        return finalValue;
     }
 
     public void AddModifire(int modifire)
@@ -27,9 +30,8 @@ public class Stat
     {
         if (modifire != 0)
         {
-            modifires.Add(modifire);
+            modifires.Remove(modifire);
         }
     }
 
-    //8 15
 }
