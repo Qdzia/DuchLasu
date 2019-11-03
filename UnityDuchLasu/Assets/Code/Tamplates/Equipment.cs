@@ -9,12 +9,24 @@ public class Equipment : Item
     public int trait01;
     public int trait02;
 
+    public bool isEquip = false;
+
     public EquipmentSlot equipSlot;
 
     public override void Use()
     {
         base.Use();
-        EquipmentManager.instance.Equip(this);
+        if (!isEquip)
+        {
+            Debug.Log("isequip");
+            EquipmentManager.instance.Equip(this);
+            isEquip = true;
+        }
+        else
+        {
+            EquipmentManager.instance.Unequip((int)this.equipSlot);
+            isEquip = false;
+        }
     }
 }
 

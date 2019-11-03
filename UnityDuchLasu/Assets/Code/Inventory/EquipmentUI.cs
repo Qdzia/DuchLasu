@@ -2,32 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class EquipmentUI : MonoBehaviour
 {
     public GameObject itemParent;
-    Inventory inventory;
     InventorySlot[] slots;
+    Inventory inventory;
+    Equipment[] equipments;
 
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallBack += UpdateUI;
-
+        inventory.onItemChangedCallBack += UpdateEquipment;
+        
         slots = itemParent.GetComponentsInChildren<InventorySlot>();
     }
-    public void UpdateUI()
+
+    void UpdateEquipment()
     {
+        equipments = EquipmentManager.instance.currentEquiment;
+
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)
+            if (equipments[i]!=null)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(equipments[i]);
             }
             else
             {
                 slots[i].ClearSlot();
             }
         }
+
     }
 
 }

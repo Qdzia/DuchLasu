@@ -21,7 +21,7 @@ public class EquipmentManager : MonoBehaviour
     #endregion
 
     Inventory inventory;
-    Equipment[] currentEquiment;
+    public Equipment[] currentEquiment;
     int numSlots;
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
@@ -76,5 +76,6 @@ public class EquipmentManager : MonoBehaviour
         {
             Unequip(i);
         }
-     }
+    }
+    
 }
