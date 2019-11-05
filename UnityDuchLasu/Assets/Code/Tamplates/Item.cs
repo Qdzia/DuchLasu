@@ -21,5 +21,11 @@ public class Item : ScriptableObject
     {
         Inventory.instance.Remove(this);
     }
+
+    public virtual void SetParameters()
+    {
+        //somthing maight happend
+ 
+    }
 }
 

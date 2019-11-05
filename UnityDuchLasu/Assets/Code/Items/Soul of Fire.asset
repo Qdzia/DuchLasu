@@ -17,4 +17,5 @@ MonoBehaviour:
   isInteractable: 1
   trait01: 0
   trait02: 4
+  isEquip: 1
   equipSlot: 3

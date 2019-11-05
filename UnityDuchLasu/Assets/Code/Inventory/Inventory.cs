@@ -30,9 +30,10 @@ public class Inventory : MonoBehaviour
 
     public void Add(Item item)
     {
+        
         if (item.isInteractable) items.Add(item);
-
         if(onItemChangedCallBack != null) onItemChangedCallBack.Invoke();
+        item.SetParameters();
 
     }
 

@@ -6,32 +6,20 @@ public class EquipmentUI : MonoBehaviour
 {
     public GameObject itemParent;
     InventorySlot[] slots;
-    Inventory inventory;
-    Equipment[] equipments;
 
     void Start()
     {
-        inventory = Inventory.instance;
-        inventory.onItemChangedCallBack += UpdateEquipment;
-        
+        EquipmentManager.instance.onEquipmentChanged += UpdateEquipment;
         slots = itemParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    void UpdateEquipment()
+    void UpdateEquipment(Equipment newItem, Equipment oldItem)
     {
-        equipments = EquipmentManager.instance.currentEquiment;
+        if (newItem != null)
+            slots[(int)newItem.equipSlot].AddItem(newItem);
 
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (equipments[i]!=null)
-            {
-                slots[i].AddItem(equipments[i]);
-            }
-            else
-            {
-                slots[i].ClearSlot();
-            }
-        }
+        else
+            slots[(int)oldItem.equipSlot].ClearSlot();
 
     }
 

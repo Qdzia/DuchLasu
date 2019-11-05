@@ -9,7 +9,7 @@ public class Equipment : Item
     public int trait01;
     public int trait02;
 
-    public bool isEquip = false;
+    public bool isEquip;
 
     public EquipmentSlot equipSlot;
 
@@ -18,7 +18,6 @@ public class Equipment : Item
         base.Use();
         if (!isEquip)
         {
-            Debug.Log("isequip");
             EquipmentManager.instance.Equip(this);
             isEquip = true;
         }
@@ -27,6 +26,11 @@ public class Equipment : Item
             EquipmentManager.instance.Unequip((int)this.equipSlot);
             isEquip = false;
         }
+    }
+
+    public override void SetParameters()
+    {
+        isEquip = false;
     }
 }
 
