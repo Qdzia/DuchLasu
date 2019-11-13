@@ -7,7 +7,7 @@ TagManager:
   - Platform
   - Wall
   - Enemy
-  - ViewFinder
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

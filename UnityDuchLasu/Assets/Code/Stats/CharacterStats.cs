@@ -38,7 +38,7 @@ public class CharacterStats : MonoBehaviour
     public virtual void Die()
     {
         //to be overwritten
-        Debug.Log(transform.name + " Died !!!");
+        Debug.Log(gameObject.name + " Died !!!");
 
     }
 }
