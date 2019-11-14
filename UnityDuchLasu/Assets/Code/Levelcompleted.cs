@@ -7,7 +7,7 @@ public class Levelcompleted : MonoBehaviour
     // Update is called once per frame
     public void NextLevel()
     {
-        FindObjectOfType<GameManager>().Restart();
+        //FindObjectOfType<GameManager>().Restart();
     }
 
 }
