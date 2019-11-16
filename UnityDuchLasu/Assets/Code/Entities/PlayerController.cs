@@ -57,9 +57,6 @@ public class PlayerController : MonoBehaviour
 
         speed = Mathf.Abs((int)rb.velocity.x);
         animator.SetFloat("Speed", speed);
-
-
-        if (transform.position.x > 10) FindObjectOfType<GameManager>().LevelCompleted();
     }
 
     void FixedUpdate()
