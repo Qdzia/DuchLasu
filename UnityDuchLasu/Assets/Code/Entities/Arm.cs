@@ -21,13 +21,13 @@ public class Arm : MonoBehaviour
         if (isDodge && col.gameObject.tag == "Enemy")
         {
             Physics2D.IgnoreCollision(col, cap);
-            Debug.Log("Off");
+           // Debug.Log("Off");
         }
 
         else if (!isDodge && col.gameObject.tag == "Enemy")
         {
             Physics2D.IgnoreCollision(col, cap, false);
-            Debug.Log("On");
+            //Debug.Log("On");
         }
             
     }

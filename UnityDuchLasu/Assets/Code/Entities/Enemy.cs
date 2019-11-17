@@ -23,9 +23,10 @@ public class Enemy : Entity
         if (col.gameObject.tag == "PlayerAttack")
         {
             Stats.TakeDamage(20);
+
         }
     }
-    public void Die()
+    public override void Die()
     {
         Destroy(gameObject);
     }

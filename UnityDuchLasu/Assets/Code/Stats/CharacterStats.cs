@@ -2,6 +2,7 @@
 
 public class CharacterStats : MonoBehaviour
 {
+    public Entity owner;
     public int maxHealth = 100;
     public int currentHealth { get; private set; }
    
@@ -35,11 +36,9 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public virtual void Die()
+    public void Die()
     {
-        //to be overwritten
-        Debug.Log(gameObject.name + " Died !!!");
-
+        owner.Die();
     }
 }
 

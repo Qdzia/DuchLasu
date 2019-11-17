@@ -71,12 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Enemy")
-        {
-            rb.AddForce(new Vector2(9f, 15f), ForceMode2D.Impulse);
-            player.hp = -20;
- 
-        }
+       
 
         //Add extra jump after colision with wall, check id to not allow on second jump on the same wall
         if (col.gameObject.tag == "Wall")
