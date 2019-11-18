@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Jump jump;
     public Rigidbody2D rb;
     public Player player;
     public Animator animator;
@@ -50,7 +51,10 @@ public class PlayerController : MonoBehaviour
         
         //Allow to jump
         Dodge();
-        Jump();
+        //Jump();
+        if (Input.GetKeyDown(KeyCode.Space)) jump.DoJump(0);
+        else if (Input.GetKey(KeyCode.Space)) jump.DoJump(1);
+        else if (Input.GetKeyUp(KeyCode.Space)) jump.DoJump(2);
 
         Crouch();
         
