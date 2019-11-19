@@ -9,6 +9,7 @@ public class CharacterStats : MonoBehaviour
 
     public Stat armor;
     public Stat damage;
+    public Stat speed;
 
     void Awake()
     {

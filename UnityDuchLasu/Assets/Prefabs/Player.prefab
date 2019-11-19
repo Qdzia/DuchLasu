@@ -241,7 +241,7 @@ MonoBehaviour:
   rb: {fileID: 3847993973420739403}
   feetPos: {fileID: 3847993974332578714}
   extraJumpsNumber: 1
-  circleRadius: 0.01
+  circleRadius: 0.001
   jumpForce: 20
   jumpTimer: 0.18
   extraJumps: 1
@@ -462,7 +462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3847993974332578789}
   m_LocalRotation: {x: -0.000698081, y: 0, z: 0, w: 0.99999976}
-  m_LocalPosition: {x: -0.015, y: -0.636, z: -4.18}
+  m_LocalPosition: {x: -0.0478, y: -0.5803, z: -4.1801}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 3847993973420739413}

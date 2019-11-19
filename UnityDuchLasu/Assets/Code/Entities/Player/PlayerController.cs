@@ -27,12 +27,12 @@ public class PlayerController : MonoBehaviour
     float moveInput;
     bool faceingRight = true;
     bool isGrounded;
-    float jumpTimerCounter;
-    bool isJumping;
-    int wallID;
+    
     bool blockDir;
     bool isCrouch = false;
     int dodgeTimer;
+    int wallID;
+    bool isJumping;
     
 
 
@@ -48,13 +48,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //Allow to jump
-        Dodge();
-        //Jump();
+        
         if (Input.GetKeyDown(KeyCode.Space)) jump.DoJump(0);
         else if (Input.GetKey(KeyCode.Space)) jump.DoJump(1);
         else if (Input.GetKeyUp(KeyCode.Space)) jump.DoJump(2);
+        Dodge();
+        
 
         Crouch();
         
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
         //Moving Horizontal
         moveInput = Input.GetAxis("Horizontal");
         if (BlocDir()) rb.velocity = new Vector2(moveInput * velocity, rb.velocity.y);
+
+        
 
         //Change Faceing Side
         Flip();
@@ -119,38 +122,6 @@ public class PlayerController : MonoBehaviour
         //transform.localScale = Scaler;
     }
 
-    void Jump()
-    {
-        //Using object FeetPos placed under player to check collision with sth
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, mask);
-        if (isGrounded)
-        {
-            extraJumps = extraJumpsNumber;
-            wallID = 0;
-        }
-
-        //Jump on hold Method + multiple Jump 
-        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
-        {
-            rb.velocity = Vector2.up * jumpForce;
-            isJumping = true;
-            jumpTimerCounter = jumpTimer;
-            extraJumps--;
-        }
-
-        if (Input.GetKey(KeyCode.Space) && isJumping)
-        {
-            if (jumpTimerCounter > 0)
-            {
-                rb.velocity = Vector2.up * jumpForce;
-                jumpTimerCounter -= Time.deltaTime;
-            }
-            else isJumping = false;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) isJumping = false;
-
-    }
 
     bool BlocDir()
     {

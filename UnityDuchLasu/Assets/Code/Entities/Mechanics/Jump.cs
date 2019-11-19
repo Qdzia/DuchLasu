@@ -7,16 +7,16 @@ public class Jump : MonoBehaviour
     public Transform feetPos;
 
     public int extraJumpsNumber;
-    public float circleRadius;
     public float jumpForce;
     public float jumpTimer;
     public int extraJumps;
 
+    public float circleRadius;
     float jumpTimerCounter;
     bool isJumping;
     bool isGrounded;
     
-
+    //In cause of random duble jumpiung add layer mask to overlapCircle
     public void DoJump(int input)
     {
 
