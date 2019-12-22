@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 3847993973420739404}
   - component: {fileID: 3847993973420739407}
   - component: {fileID: 1662324905065074535}
-  m_Layer: 8
+  - component: {fileID: 2012768858578846484}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -33,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3847993973420739415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 2.77, z: 0}
+  m_LocalPosition: {x: 3.028, y: 2.8042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3847993974332578714}
@@ -76,7 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2144c9ee494604c9e114ff4d2dd328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: {fileID: 0}
+  entity: {fileID: 3847993973420739401}
+  ground:
+    serializedVersion: 2
+    m_Bits: 512
+  jump: {fileID: 1662324905065074535}
   rb: {fileID: 3847993973420739403}
   player: {fileID: 3847993973420739401}
   animator: {fileID: 3847993973420739406}
@@ -85,16 +90,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   cap: {fileID: 3847993973420739400}
+  dodge: {fileID: 2012768858578846484}
   speed: 5
   velocity: 15
   wallFriction: 1
   extraJumpsNumber: 1
   circleRadius: 0.1
-  jumpForce: 20
-  jumpTimer: 0.18
-  extraJumps: 0
-  dodgeTime: 13
-  isDodge: 0
 --- !u!212 &3847993973420739402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -157,6 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdbcfa32c37a87498e272c37b75d126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats: {fileID: 3847993973420739404}
+  rb: {fileID: 3847993973420739403}
+  feetPos: {fileID: 3847993974332578714}
+  controller: {fileID: 3847993973420739412}
   hp: 0
   canHurt: 1
 --- !u!70 &3847993973420739400
@@ -212,6 +217,8 @@ MonoBehaviour:
     baseValue: 0
   damage:
     baseValue: 0
+  speed:
+    baseValue: 0
 --- !u!114 &3847993973420739407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,13 +245,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7697952382d4c86488237366ea3eb325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 3847993973420739403}
-  feetPos: {fileID: 3847993974332578714}
+  entity: {fileID: 3847993973420739401}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
   extraJumpsNumber: 1
-  circleRadius: 0.001
   jumpForce: 20
   jumpTimer: 0.18
   extraJumps: 1
+  circleRadius: 0.001
+--- !u!114 &2012768858578846484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847993973420739415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf6dd4db4827da4e8fc865ba1969d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 3847993973420739401}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  speed: 20
+  isDodge: 0
+  dodgeTime: 10
 --- !u!1 &3847993973732622510
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3847993973732622508}
   - component: {fileID: 3847993973732622511}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: AttackZone
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -301,9 +329,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3847993973753555920}
-  - component: {fileID: 3847993973753555921}
   - component: {fileID: 3847993973753555926}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmR
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -324,21 +351,6 @@ Transform:
   m_Father: {fileID: 3847993973420739413}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3847993973753555921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3847993973753555923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4226c0989d2b21340ae60cfbf01aef1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cap: {fileID: 3847993973420739400}
-  ignoreTime: 1
-  playerCon: {fileID: 3847993973420739412}
 --- !u!61 &3847993973753555926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -374,9 +386,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3847993973763990821}
-  - component: {fileID: 3847993973763991002}
   - component: {fileID: 3847993973763991003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmL
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -397,21 +408,6 @@ Transform:
   m_Father: {fileID: 3847993973420739413}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3847993973763991002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3847993973763990820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4226c0989d2b21340ae60cfbf01aef1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cap: {fileID: 3847993973420739400}
-  ignoreTime: 1
-  playerCon: {fileID: 3847993973420739412}
 --- !u!61 &3847993973763991003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -447,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3847993974332578714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeetPos
   m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -462,7 +458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3847993974332578789}
   m_LocalRotation: {x: -0.000698081, y: 0, z: 0, w: 0.99999976}
-  m_LocalPosition: {x: -0.0478, y: -0.5803, z: -4.1801}
+  m_LocalPosition: {x: -0.0285, y: -0.5111, z: -4.1802}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 3847993973420739413}

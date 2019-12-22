@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class Dodge : MonoBehaviour
 {
-
     public Entity entity;
 
-    public Rigidbody2D rb;
-    bool isGrounded;
-    bool faceingRight = true;
+    Rigidbody2D rb;
     public float speed;
 
     int dodgeTimer;
     public bool isDodge;
     public int dodgeTime;
-    
-    
-    
-    
-    
+    bool isGrounded;
+    bool faceingRight;
 
-    void DoDodge()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && !isDodge)
+        rb = entity.rb;
+    }
+
+    public void DoDodge()
+    {
+        isGrounded = entity.controller.IsGrounded();
+        faceingRight = entity.controller.faceingRight;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDodge)
         {
-            CanHurt();
+            Physics2D.IgnoreLayerCollision(10, 10);
             dodgeTimer = dodgeTime;
             isDodge = true;
         }
@@ -34,16 +36,11 @@ public class Dodge : MonoBehaviour
         {
             if (faceingRight) rb.velocity = Vector2.right * speed * 1.5f;
             else rb.velocity = Vector2.left * speed * 1.5f;
+            
             dodgeTimer--;
-            if (dodgeTimer == 1) CanHurt();
+            if (dodgeTimer == 1) Physics2D.IgnoreLayerCollision(10, 10,false);
         }
         else isDodge = false;
 
-    }
-
-    public void CanHurt()
-    {
-        player.canHurt = !player.canHurt;
-        Debug.Log("CanHurt");
     }
 }

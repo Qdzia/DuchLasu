@@ -4968,7 +4968,7 @@ GameObject:
   - component: {fileID: 771796187}
   - component: {fileID: 771796191}
   - component: {fileID: 771796192}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5565,7 +5565,7 @@ GameObject:
   - component: {fileID: 961837232}
   - component: {fileID: 961837231}
   - component: {fileID: 961837230}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tooth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8577,18 +8577,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1320891592}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1343065909 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1662324905065074535, guid: 96d750d218c555d4ead8608a1b4e5dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3847993973434884442}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7697952382d4c86488237366ea3eb325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1347904274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10830,7 +10818,7 @@ GameObject:
   - component: {fileID: 1959710844}
   - component: {fileID: 1959710843}
   - component: {fileID: 1959710842}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Necles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12650,11 +12638,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3847993973420739412, guid: 96d750d218c555d4ead8608a1b4e5dc6,
-        type: 3}
-      propertyPath: jump
-      value: 
-      objectReference: {fileID: 1343065909}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d750d218c555d4ead8608a1b4e5dc6, type: 3}
 --- !u!1001 &4304956273375280696

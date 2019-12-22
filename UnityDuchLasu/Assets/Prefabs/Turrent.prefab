@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122731805373748012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888067801809128395}
   - component: {fileID: 1238837246296370032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6904776400337919188}
   - component: {fileID: 3887462277373114640}
   - component: {fileID: 291806059734077597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turrent
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats: {fileID: 6904776400337919188}
+  rb: {fileID: 0}
+  feetPos: {fileID: 0}
 --- !u!114 &6904776400337919188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +224,8 @@ MonoBehaviour:
     baseValue: 0
   damage:
     baseValue: 0
+  speed:
+    baseValue: 0
 --- !u!114 &3887462277373114640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats: {fileID: 291806059734077597}
+  rb: {fileID: 0}
+  feetPos: {fileID: 0}
   rifle: {fileID: 1238837246296370032}
   sensor: {fileID: 2122731805373748012}
   timeToShoot: 20
@@ -255,4 +261,6 @@ MonoBehaviour:
   armor:
     baseValue: 0
   damage:
+    baseValue: 0
+  speed:
     baseValue: 0

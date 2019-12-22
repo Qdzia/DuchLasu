@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public CharacterStats Stats;
     // Start is called before the first frame update
     public int hp
     {
