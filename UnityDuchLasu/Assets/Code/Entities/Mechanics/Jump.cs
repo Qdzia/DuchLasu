@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-
-public class Jump : MonoBehaviour
+public class Jump : MonoBehaviour, ISkill
 {
     public Entity entity;
-    public LayerMask mask;
+
 
     public int extraJumpsNumber;
     public float jumpForce;
@@ -14,7 +13,6 @@ public class Jump : MonoBehaviour
     Rigidbody2D rb;
     Transform feetPos;
  
-    public float circleRadius;
     float jumpTimerCounter;
     bool isJumping;
     bool isGrounded;
@@ -22,12 +20,10 @@ public class Jump : MonoBehaviour
     private void Awake()
     {
         rb = entity.rb;
-        feetPos = entity.feetPos;
-
-        
+        feetPos = entity.feetPos;   
     }
     //In cause of random duble jumpiung add layer mask to overlapCircle
-    public void DoJump(int input)
+    public void Active()
     {
 
         //Using object FeetPos placed under player to check collision with sth
@@ -37,7 +33,7 @@ public class Jump : MonoBehaviour
             extraJumps = extraJumpsNumber;
         
         //Jump on hold Method + multiple Jump 
-        if (input==(int)space.down && extraJumps > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             isJumping = true;
@@ -45,7 +41,7 @@ public class Jump : MonoBehaviour
             extraJumps--;
         }
 
-        if (input == (int)space.hold && isJumping)
+        if (Input.GetKey(KeyCode.Space) && isJumping)
         {
             if (jumpTimerCounter > 0)
             {
@@ -55,8 +51,7 @@ public class Jump : MonoBehaviour
             else isJumping = false;
         }
 
-        if (input == (int)space.up) isJumping = false;
+        if (Input.GetKeyUp(KeyCode.Space)) isJumping = false;
 
     }
-    enum space { down, hold, up}
 }

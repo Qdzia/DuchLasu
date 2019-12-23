@@ -81,21 +81,8 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 512
-  jump: {fileID: 1662324905065074535}
-  rb: {fileID: 3847993973420739403}
-  player: {fileID: 3847993973420739401}
-  animator: {fileID: 3847993973420739406}
-  feetPos: {fileID: 3847993974332578714}
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
-  cap: {fileID: 3847993973420739400}
-  dodge: {fileID: 2012768858578846484}
-  speed: 5
+  faceingRight: 1
   velocity: 15
-  wallFriction: 1
-  extraJumpsNumber: 1
-  circleRadius: 0.1
 --- !u!212 &3847993973420739402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -246,14 +233,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 3847993973420739401}
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
   extraJumpsNumber: 1
   jumpForce: 20
   jumpTimer: 0.18
   extraJumps: 1
-  circleRadius: 0.001
 --- !u!114 &2012768858578846484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,12 +250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 3847993973420739401}
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
-  speed: 20
+  speed: 10
   isDodge: 0
-  dodgeTime: 10
+  dodgeTime: 3
 --- !u!1 &3847993973732622510
 GameObject:
   m_ObjectHideFlags: 0

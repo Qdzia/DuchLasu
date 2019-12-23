@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dodge : MonoBehaviour
+public class Dodge : MonoBehaviour, ISkill
 {
     public Entity entity;
 
@@ -20,12 +20,12 @@ public class Dodge : MonoBehaviour
         rb = entity.rb;
     }
 
-    public void DoDodge()
+    public void Active()
     {
         isGrounded = entity.controller.IsGrounded();
         faceingRight = entity.controller.faceingRight;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDodge)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDodge && isGrounded)
         {
             Physics2D.IgnoreLayerCollision(10, 10);
             dodgeTimer = dodgeTime;
@@ -34,9 +34,9 @@ public class Dodge : MonoBehaviour
 
         if (dodgeTimer > 0)
         {
-            if (faceingRight) rb.velocity = Vector2.right * speed * 1.5f;
-            else rb.velocity = Vector2.left * speed * 1.5f;
-            
+            if (faceingRight) rb.AddForce(Vector2.right * speed * 1.5f, ForceMode2D.Impulse);
+            else rb.AddForce(Vector2.left * speed * 1.5f, ForceMode2D.Impulse);
+
             dodgeTimer--;
             if (dodgeTimer == 1) Physics2D.IgnoreLayerCollision(10, 10,false);
         }
